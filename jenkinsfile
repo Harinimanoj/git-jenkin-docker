@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/Harinimanoj/git-jenkin-docker.git'
+            }
+        }
+
+        stage('pull docker image') {
+            steps {
+                sh 'docker pull nginx'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                sh '
+                 docker rm -f contianer2 || true
+                 docker run -itd --name nginxcontainer -p "8084:80" nginx'
+            }
+        }
+    }
+
