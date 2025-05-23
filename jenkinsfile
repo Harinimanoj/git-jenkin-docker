@@ -19,9 +19,9 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                sh '
+                sh """
                  docker rm -f contianer2 || true
-                 docker run -itd --name nginxcontainer -p "8084:80" nginx'
+                 docker run -itd --name nginxcontainer -p "8084:80" nginx"""
             }
         }
     }
